@@ -107,7 +107,7 @@ public class ChatClient extends Thread implements ActionListener, KeyListener {
         scroll2 = new JScrollPane(area_2);
         //scroll2.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         //scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-        
+
         mainPanel.setLayout(new BorderLayout());
         //mainPanel.add(new JScrollPane(area_2));
         listModel = new DefaultListModel();
@@ -244,7 +244,7 @@ public class ChatClient extends Thread implements ActionListener, KeyListener {
         cb1.setMnemonic(KeyEvent.VK_P);
 
         try {
-            client = new Socket(IP, 1001);
+            client = new Socket(IP, 8888);
             toServer = new PrintStream(client.getOutputStream());
             fromServer = new BufferedReader(new InputStreamReader(client.getInputStream()));
             toServer.println("##" + name);
@@ -340,9 +340,9 @@ public class ChatClient extends Thread implements ActionListener, KeyListener {
             toServer.println("out1" + this.name);
             new Login();
             area_2.requestFocus();
-        } */ else if (src == button_7) {
+        } else if (src == button_7) {
             new help();
-        } else if (src == exit) {
+        } */ else if (src == exit) {
             System.exit(0);
         } /*else if (src == save) {
             try {
@@ -361,9 +361,9 @@ public class ChatClient extends Thread implements ActionListener, KeyListener {
             area_2.requestFocus();
         } else if (src == about) {
             new about();
-        } */ else if (src == information) {
+        } else if (src == information) {
             new help();
-        } else if (src == cb1) {
+        } */ else if (src == cb1) {
             area_2.requestFocus();
         }
     }
@@ -709,10 +709,8 @@ public class ChatClient extends Thread implements ActionListener, KeyListener {
                 area_1.append("data not saved." + lineSeparator);
             }
             area_2.requestFocus();
-        } else if (field.equals("/about") || field.equals("/About") || field.equals("/ABOUT")) {
-            new about();
         } else if (field.equals("/help") || field.equals("/Help") || field.equals("/HELP") || field.equals("/?")) {
-            new help();
+//            new help();
         } else if (field.equals("/clear") || field.equals("/Clear") || field.equals("/cLEAR") || field.equals("/CLear")) {
             area_1.setText("");
         } else {

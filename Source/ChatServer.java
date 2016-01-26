@@ -115,7 +115,7 @@ public class ChatServer extends Thread implements ActionListener, Runnable {
 
         if (src == button_1) {
             try {
-                server = new ServerSocket(1001);
+                server = new ServerSocket(8888);
             } catch (Exception e) {
             }
             if (count == 0) {

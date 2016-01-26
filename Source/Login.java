@@ -37,7 +37,7 @@ final class Login {
     }
 
     Login() {
-        String IP = "192.168.10.7";
+        String IP = "192.168.10.88";
 //        String IP[] = new String[254];
         try {
             String username = System.getProperty("user.name");
