@@ -37,28 +37,31 @@ final class Login {
     }
 
     Login() {
-        String IP = "192.168.10.88";
-//        String IP[] = new String[254];
+//        String IP = "192.168.10.7";
+        String IP[] = new String[255];
         try {
             String username = System.getProperty("user.name");
             ipaddr = InetAddress.getLocalHost();
             hostname = ipaddr.getHostName();
-            clientObj = new ChatClient(username+ " ("+gethostString()+")", IP, this);
+//            clientObj = new ChatClient(username+ " ("+gethostString()+")", IP, this);
             ////////////////FOR DYNAMIC SERVER IP ADDRESS\\\\\\\\\\\\\\\\
-//            String ipadd = InetAddress.getLocalHost().getHostAddress();
-//            String ipstart = ipadd.substring(0, ipadd.lastIndexOf(".") + 1);
-//            for (int i = 8; i < 255; i++) {
-////                ipaddr = InetAddress.getLocalHost();
-////                hostname = ipaddr.getHostName();
-//                String ip = ipstart + i;
-//                IP[i] = ip;
-//                try {
-//                    clientObj = new ChatClient(gethostString(), IP[i], this);
-//                } catch (Exception e) {
-//                    continue;
-//                }
-//            }
-        } catch (Exception e) {
+            String ipadd = InetAddress.getLocalHost().getHostAddress();
+            String ipstart = ipadd.substring(0, ipadd.lastIndexOf(".") + 1);
+            for (int i = 1; i < 255; i++) {
+//                ipaddr = InetAddress.getLocalHost();
+//                hostname = ipaddr.getHostName();
+                String ip = ipstart + i;
+                IP[i] = ip;
+                try {
+                    JOptionPane.showMessageDialog(null, IP[i]);
+                    clientObj = new ChatClient(username + " (" + gethostString() + ")", IP[i], this);
+                    break;
+                } catch (Exception e) {
+                }
+            }
+            ////////////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+        } catch (UnknownHostException | HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "No server detected.");
             System.exit(0);
         }
         try {
